@@ -24,8 +24,22 @@ def zvaigznites2(skaits):
 
 zvaigznites1(7)
 
+print("-------------------")
+
 saraksts1 = [1, 7, 5, 9, 35, 2]
 saraksts2 = [4, 2, 2, 39, 6, 4]
 
 for skaititajs in range(len(saraksts1)):
     print("skaititajs:", skaititajs, "pirmais skaitlis:", saraksts1[skaititajs], "otrais skaitlis:", saraksts2[skaititajs], "rezultats:", rezultats(saraksts1[skaititajs], saraksts2[skaititajs]))
+
+print("-------------------")
+
+skaitlu_pari = [[2,5], [4,7], [3,4], [7,9]]
+
+for i in range(len(skaitlu_pari)):
+    print("skaititajs:", i, "pirmais skaitlis:", skaitlu_pari[i][0], "otrais skaitlis:", skaitlu_pari[i][1], "rezultats:", rezultats(skaitlu_pari[i][0], skaitlu_pari[i][1]))
+
+print("-------------------")
+
+for elements in skaitlu_pari[:-1]:
+    print("pirmais skaitlis:", elements[0], "otrais skaitlis:", elements[1], "rezultats:", (elements[0], elements[1]))
