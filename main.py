@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from dati import dabut_rindinas
 
 app = Flask(__name__)
 
@@ -12,12 +13,22 @@ def te():
 
 @app.route("/saraksts")
 def saraksts():
-    saraksts = ["🍑 🍑 🍑 ", " 🍆💦", "👅", "im a freakkkkkkk lmaooo"]
-    bildes = ["https://i.imgflip.com/83ag8h.jpg", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/89f56f15-6080-4550-995b-c78878611786/dgvms7a-53e31f7c-10fe-4f8b-b4b3-e524375a616d.jpg/v1/fill/w_865,h_924,q_70,strp/freak_meter_by_somerandomidklol_dgvms7a-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE1MyIsInBhdGgiOiJcL2ZcLzg5ZjU2ZjE1LTYwODAtNDU1MC05OTViLWM3ODg3ODYxMTc4NlwvZGd2bXM3YS01M2UzMWY3Yy0xMGZlLTRmOGItYjRiMy1lNTI0Mzc1YTYxNmQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.8WTol54YnFLdQ-EmxGStxaLeerPxcmtnCnydooTyKJQ", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyWcFNDirwEzXJSFmptl0j_Kl7IEREZBPy8nVr3ti4tA&s", "https://i.ytimg.com/vi/CWNYZlt4t_Y/maxresdefault.jpg"]
-    kopejais_saraksts = [["🍑 🍑 🍑 ","https://i.imgflip.com/83ag8h.jpg"], [" 🍆💦", "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/89f56f15-6080-4550-995b-c78878611786/dgvms7a-53e31f7c-10fe-4f8b-b4b3-e524375a616d.jpg/v1/fill/w_865,h_924,q_70,strp/freak_meter_by_somerandomidklol_dgvms7a-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTE1MyIsInBhdGgiOiJcL2ZcLzg5ZjU2ZjE1LTYwODAtNDU1MC05OTViLWM3ODg3ODYxMTc4NlwvZGd2bXM3YS01M2UzMWY3Yy0xMGZlLTRmOGItYjRiMy1lNTI0Mzc1YTYxNmQuanBnIiwid2lkdGgiOiI8PTEwODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.8WTol54YnFLdQ-EmxGStxaLeerPxcmtnCnydooTyKJQ", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyWcFNDirwEzXJSFmptl0j_Kl7IEREZBPy8nVr3ti4tA&s"]]
-    return render_template("saraksts.html", vardi = saraksts, bildes = bildes, garums = len(saraksts))
+    saraksts = ["Anna", "Katls", "Kartupelis"]
+    bildes = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcCG4898FTkK5IUBMpLleBHtjK3jUILS3YsjCFfLr56g&s","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQtv-3G97RDAt-sgNqxhaEB4f2SDwVxJaOq7JOY0D_7zA&s","https://www.darzaabc.lv/public/assets/images/products/Agrimatco/kartupe%C4%BCi/kartupeli-monalisa-dzeltenie-seklas-kartupelu-stadamais-materials.jpg"]
+    kopejais_saraksts = []
+    faila_rindas = dabut_rindinas()
+    for rinda in faila_rindas:
+        elements = rinda.split(", ")
+        kopejais_saraksts.append(elements)
+
+    return render_template("saraksts.html", vardi = saraksts, bildes = bildes, garums = len(saraksts), visi = kopejais_saraksts)
+
+@app.route("/info", methods=['POST', 'GET'])
+def info():
+    return render_template("info.html")
+
 
 if __name__ == '__main__':
     app.run(port = 5000)
 
-    print("Sveiki!")
+print("Sveiki!")
